@@ -1,26 +1,21 @@
+
 import time
 
-def main():
-    horas = int(input("Ingrese las horas: "))
-    minutos = int(input("Ingrese los minutos: "))
-    segundos = int(input("Ingrese los segundos: "))
-    
-    tiempo_limite = horas * 3600 + minutos * 60 + segundos
-    
-    print("\nCronómetro iniciado:")
-    tiempo_actual = 0
-    
-    while tiempo_actual < tiempo_limite:
-        horas_actual = tiempo_actual // 3600
-        minutos_actual = (tiempo_actual % 3600) // 60
-        segundos_actual = tiempo_actual % 60
-        
-        print(f"{horas_actual:02d}:{minutos_actual:02d}:{segundos_actual:02d}", end="\r")
-        time.sleep(1)
-        
-        tiempo_actual += 1
-    
-    print("\nTiempo límite alcanzado.")
+# Solicitar al usuario ingresar el tiempo límite en horas, minutos y segundos
+horas_limite = int(input("Ingrese las horas límite: "))
+minutos_limite = int(input("Ingrese los minutos límite: "))
+segundos_limite = int(input("Ingrese los segundos límite: "))
 
-if __name__ == "__main__":
-    main()
+# Convertir el tiempo límite a segundos totales
+limite_en_segundos = horas_limite * 3600 + minutos_limite * 60 + segundos_limite
+
+# Cronometrar y mostrar el tiempo hasta llegar al límite
+for tiempo_actual in range(limite_en_segundos + 1):
+    horas_actual = tiempo_actual // 3600
+    minutos_actual = (tiempo_actual % 3600) // 60
+    segundos_actual = tiempo_actual % 60
+    print(f"{horas_actual:02d}:{minutos_actual:02d}:{segundos_actual:02d}", end="\r")
+    time.sleep(1)
+
+print("\n¡Tiempo límite alcanzado!")
+
